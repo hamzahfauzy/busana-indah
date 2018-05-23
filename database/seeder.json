@@ -1,0 +1,17 @@
+[
+    {
+        "table_name" : "users",
+        "table_value" : [
+            [1,"admin","","male","08123456789","admin@admin.com","admin",1],
+            [2,"user","dummy address","male","08234567890","user@mail.com","user",2],
+            [3,"tester","tester address","male","08221345678","tester@mail.com","tester",2]
+        ]
+    },{      
+        "table_name" : "products",
+        "table_value" : [
+            [1,"Product 1","Product 1 Description","45000","3","CURRENT_TIMESTAMP"],
+            [2,"Product 2","Product 2 Description","25000","5","CURRENT_TIMESTAMP"],
+            [3,"Product 3","Product 3 Description","53000","14","CURRENT_TIMESTAMP"]
+        ]
+    }
+]
