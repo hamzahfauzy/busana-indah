@@ -3,6 +3,7 @@ namespace controllers\Admin;
 use libs\Controller;
 use libs\Session;
 use models\Product_Model;
+use models\Picture_Model;
 
 class Products extends Controller {
 
@@ -21,10 +22,58 @@ class Products extends Controller {
         return $this->view->render("index",1,$data);
     }
 
-    function actionTambah(){
+    function actionCreate(){
+        $model = new Product_Model;
+        if($this->request("POST")){
+            $model->attr($_POST);
+            if($model->save())
+                $this->redirect($this->view->controller);
+        }
+        return $this->view->render("form",1,["model"=>$model]);
     }
 
-    function actionView($param){
+    function actionEdit($id){
+        $model = new Product_Model;
+        if($this->request("POST")){
+            $model->attr($_POST);
+            if($model->save())
+                $this->redirect($this->view->controller);
+        }
+        $model->find()->where(["productID"=>$id])->one();
+        return $this->view->render("form",1,["model"=>$model]);
+    }
+
+    function actionView($id){
+        $model = new Product_Model;
+        $picture = new Picture_Model;
+        $model->find()->where(["productID"=>$id])->one();
+        $picture->find()->where(["picture_forID"=>$id,"picture_for"=>1])->execute();
+        return $this->view->render("view",1,["model"=>$model,"picture"=>$picture]);
+    }
+
+    function actionDelete($id){
+        $model = new Product_Model;
+        $model->delete(["productID"=>$id]);
+        $this->redirect($this->view->controller);
+    }
+
+    function actionHapusfoto(){
+        $model = new Picture_Model;
+        $model->delete(["pictureID"=>$_POST['pictureID']]);
+        $this->redirect($this->view->controller);
+    }
+
+    function actionUpload(){
+        if(isset($_FILES["file_path"])){
+            $model = new Picture_Model;
+            $file = $_FILES["file_path"];
+            copy($file['tmp_name'],"uploads/products/".$file['name']);
+            $model->picture_for = 1;
+            $model->picture_forID = $_POST["picture_forID"];
+            $model->file_path = "uploads/products/".$file['name'];
+            $model->save();
+            return $this->redirect($this->view->controller);
+        }
     }
 
     function actionSave(){

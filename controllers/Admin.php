@@ -7,6 +7,8 @@ use libs\Users_Model;
 use controllers\admin\Products as Products;
 use controllers\admin\Users as Users;
 use controllers\admin\Promo as Promo;
+use controllers\admin\Transactions as Transactions;
+use controllers\admin\Members as Members;
 
 class Admin extends Controller {
 
@@ -45,6 +47,26 @@ class Admin extends Controller {
 
     function actionPromo($action = false, $param = false){
         $controller = new Promo;
+        if($action == false){
+            $controller->actionIndex();
+        }else{
+            $action = "action".ucfirst($action);
+            $controller->$action($param);
+        }
+    }
+
+    function actionTransactions($action = false, $param = false){
+        $controller = new Transactions;
+        if($action == false){
+            $controller->actionIndex();
+        }else{
+            $action = "action".ucfirst($action);
+            $controller->$action($param);
+        }
+    }
+
+    function actionMembers($action = false, $param = false){
+        $controller = new Members;
         if($action == false){
             $controller->actionIndex();
         }else{

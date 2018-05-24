@@ -76,7 +76,7 @@
                         <a href="<?=URL;?>/admin/members"><i class="fa fa-fw fa-table"></i> Manajemen Member</a>
                     </li>
                     <li <?=($this->controller=="admin/transactions") ? 'class="active"' : ''; ?>>
-                        <a href="<?=URL;?>/admin/trancations"><i class="fa fa-fw fa-edit"></i> Transaksi</a>
+                        <a href="<?=URL;?>/admin/transactions"><i class="fa fa-fw fa-edit"></i> Transaksi</a>
                     </li>
                     <li <?=($this->controller=="admin/promo") ? 'class="active"' : ''; ?>>
                         <a href="<?=URL;?>/admin/promo"><i class="fa fa-fw fa-desktop"></i> Promo</a>

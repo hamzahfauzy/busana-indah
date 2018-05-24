@@ -21,4 +21,16 @@ class Users extends Controller {
         $data["label"] = ["User ID","Nama Lengkap","Alamat","Jenis Kelamin","Phone","Username","Password","Level"];
         return $this->view->render("index",1,$data);
     }
+
+    function actionView($id){
+        $model = new Users_Model;
+        $model->find()->where(["userID"=>$id])->one();
+        return $this->view->render("view",1,["model"=>$model]);
+    }
+
+    function actionDelete($id){
+        $model = new Users_Model;
+        $model->delete(["userID"=>$id]);
+        $this->redirect($this->view->controller);
+    }
 }
