@@ -20,15 +20,58 @@ class Html {
 		$return .= $val.">\n";
 		return $return;
 	}
+
+	static function date($model = false, $name=false, $attr = false){
+		$return = "<input type='date'";
+		if($attr != false && is_array($attr)){
+			foreach($attr as $key => $val){
+				$return .= " $key='$val'";
+			}
+		}
+		if($model==true && $name==true && !empty($model->{$name})){
+			$val = " value='";
+			$val .= $model->{$name};
+			$val .= "' name='$name'";
+		}else{
+			$val = " name='$name'";
+		}
+		$return .= $val.">\n";
+		return $return;
+	}
+
+	static function datetime($model = false, $name=false, $attr = false){
+		$return = "<input type='datetime'";
+		if($attr != false && is_array($attr)){
+			foreach($attr as $key => $val){
+				$return .= " $key='$val'";
+			}
+		}
+		if($model==true && $name==true && !empty($model->{$name})){
+			$val = " value='";
+			$val .= $model->{$name};
+			$val .= "' name='$name'";
+		}else{
+			$val = " name='$name'";
+		}
+		$return .= $val.">\n";
+		return $return;
+	}
 	
-	static function password($attr = false){
+	static function password($model = false, $name=false, $attr = false){
 		$return = "<input type='password'";
 		if($attr != false && is_array($attr)){
 			foreach($attr as $key => $val){
 				$return .= " $key='$val'";
 			}
 		}
-		$return .= ">\n";
+		if($model==true && $name==true && !empty($model->{$name})){
+			$val = " value='";
+			$val .= $model->{$name};
+			$val .= "' name='$name'";
+		}else{
+			$val = " name='$name'";
+		}
+		$return .= $val.">\n";
 		return $return;
 	}
 	

@@ -2,5 +2,5 @@
 
 define("DBHOST", "localhost");
 define("DBUSER", "root");
-define("DBPASSWORD", "root");
+define("DBPASSWORD", "");
 define("DBNAME", "busana_db");

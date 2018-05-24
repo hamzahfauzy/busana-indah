@@ -22,11 +22,9 @@ class Products extends Controller {
     }
 
     function actionTambah(){
-        echo "Form Tambah";
     }
 
-    function actionTampil($param){
-        echo $param;
+    function actionView($param){
     }
 
     function actionSave(){

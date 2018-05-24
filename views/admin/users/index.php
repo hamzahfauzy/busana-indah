@@ -16,6 +16,6 @@ use libs\Html;
         </ol>
     </div>
     <div class="col-lg-12">
-        <?=Html::tablecrud(["class"=>"table table-bordered","label"=>$label,"value"=>$model->data],URL."/admin/products?action=",$model);?>
+        <?=Html::tablecrud(["class"=>"table table-bordered","label"=>$label,"value"=>$model->data],URL."/admin/users?action=",$model);?>
     </div>
 </div>
