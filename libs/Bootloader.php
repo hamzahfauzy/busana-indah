@@ -39,15 +39,15 @@ class Bootloader
 			$method = "action".$str;
 			if(method_exists($controller, $method)){
 				$parameter = false;
-				if(isset($_SERVER['REQUEST_METHOD']) && ($_SERVER['REQUEST_METHOD'] == "GET")){
-					$className = ucfirst($url[0]);				
+				if(isset($_SERVER['REQUEST_METHOD']) && ($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "POST")){
+					$className = ucfirst($url[0]);
 					$className = "controllers\\$className";
 					$r = new \ReflectionMethod($className, $method);
 					$params = $r->getParameters();
 					foreach ($params as $param) {
 					    if(isset($_GET[$param->getName()]))
 						    $parameter[] = $_GET[$param->getName()];
-						else{
+						elseif(!isset($_GET[$param->getName()]) && $r->getNumberOfRequiredParameters()){
 							echo "<h2>Parameter ".$param->getName()." Not Found</h2>";
 							return;
 						}

@@ -177,26 +177,29 @@ class Html {
 		$return = "<table ";
 		$row = "";
 		$label = "";
+		$pk = $model->getPK();
+		$pk = $pk[count($pk)-1]->Column_name;
 		if($attr != false && is_array($attr)){
 			foreach($attr as $key => $val){
 				if($key!="value" && $key!="label")
 					$return .= " $key='$val'";
 				else if($key=="value"){
-					if(is_array($val)){
+					if(is_array($val) || is_object($val)){
 						if(count($val) > 0){
 							foreach($val as $rows){
-								if(is_array($rows)){
+								if(is_array($rows) || is_object($rows)){
 									$row .= "<tr>";
-									$pk = $model->getPK();
-									$pk = $pk[0]['Column_name'];
-									$id = $rows[$pk];
+									$id = $rows->{$pk};
 									foreach($rows as $col){
-										$row .= "<td>".$col."</td>";
+										if(is_numeric($col))
+											$row .= "<td>".number_format($col)."</td>";
+										else
+											$row .= "<td>".$col."</td>";
 									}
 									$row .= "<td>
-												<a href='".$base."/view/".$id."'>Lihat</a> |
-												<a href='".$base."/edit/".$id."'>Edit</a> |
-												<a href='".$base."/delete/".$id."'>Hapus</a>
+												<a href='".$base."view&param=".$id."'>Lihat</a> |
+												<a href='".$base."edit&param=".$id."'>Edit</a> |
+												<a href='".$base."delete&param=".$id."'>Hapus</a>
 											</td></tr>";
 								}else{
 									$row .= "<tr><td>Data Source Invalid</td></tr>";
@@ -208,7 +211,7 @@ class Html {
 						}
 					}
 				}else if($key == "label"){
-					if(is_array($val)){
+					if(is_array($val) || is_object($val)){
 						$label .= "<tr>";
 						foreach($val as $rows){
 							$label .= "<th>".$rows."</th>";

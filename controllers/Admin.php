@@ -4,6 +4,9 @@ use libs\Controller;
 use libs\Session;
 use libs\Users_Model;
 
+use controllers\admin\Products as Products;
+use controllers\admin\Users as Users;
+
 class Admin extends Controller {
 
     function __construct(){
@@ -17,5 +20,25 @@ class Admin extends Controller {
 
     function actionIndex(){
         return $this->view->render("index",1);
+    }
+
+    function actionProducts($action = false, $param = false){
+        $controller = new Products;
+        if($action == false){
+            $controller->actionIndex();
+        }else{
+            $action = "action".ucfirst($action);
+            $controller->$action($param);
+        }
+    }
+
+    function actionUsers($action = false, $param = false){
+        $controller = new Users;
+        if($action == false){
+            $controller->actionIndex();
+        }else{
+            $action = "action".ucfirst($action);
+            $controller->$action($param);
+        }
     }
 }

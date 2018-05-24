@@ -1,3 +1,6 @@
+<?php
+use libs\Session;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,9 +45,20 @@ foreach($this->vendor as $key => $val){
                   </a>
                   <ul class="account_selection">
                     <li><a href="<?=URL;?>/auth"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
-                    <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                    <li><a href="<?=URL;?>/auth/register"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
                   </ul>
                 </li>
+                <?php if(Session::get("username")): ?>
+                <li class="account">
+                  <a href="#">
+                    <?=Session::get("username");?>
+                    <i class="fa fa-angle-down"></i>
+                  </a>
+                  <ul class="account_selection">
+                    <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a></li>
+                  </ul>
+                </li>
+                <?php endif; ?>
               </ul>
             </div>
           </div>
@@ -59,15 +73,23 @@ foreach($this->vendor as $key => $val){
         <div class="row">
           <div class="col-lg-12 text-right">
             <div class="logo_container">
-              <a href="#">Busana<span>Indah</span></a>
+              <a href="<?=URL;?>">Busana<span>Indah</span></a>
             </div>
             <nav class="navbar">
+              <form class="navbar-form" method="post">
+                <div class="form-group" style="display:inline;">
+                  <div class="input-group">
+                    <input class="form-control" name="search" type="text" placeholder="Cari...">
+                    <span class="input-btn-group"><button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button></span>
+                  </div>
+                </div>
+              </form>
               <ul class="navbar_menu">
-                <li><a href="#">home</a></li>
+                <li><a href="<?=URL;?>">home</a></li>
                 <li><a href="<?=URL;?>/contact">contact</a></li>
+                <li><a href="<?=URL;?>/products">products</a></li>
               </ul>
               <ul class="navbar_user">
-                <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
                 <li class="checkout">
                   <a href="#">
@@ -102,8 +124,9 @@ foreach($this->vendor as $key => $val){
             <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
           </ul>
         </li>
-        <li class="menu_item"><a href="#">home</a></li>
-        <li class="menu_item"><a href="#">contact</a></li>
+        <li class="menu_item"><a href="<?=URL;?>">home</a></li>
+        <li class="menu_item"><a href="<?=URL;?>/contact">contact</a></li>
+        <li class="menu_item"><a href="<?=URL;?>/products">products</a></li>
       </ul>
     </div>
   </div>

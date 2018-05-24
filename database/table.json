@@ -86,6 +86,13 @@
                     "field_ai":false,
                     "field_timestamp":false
                 },{
+                    "field_name":"product_category",
+                    "field_datatype":"varchar",
+                    "field_length":30,
+                    "field_primary":false,
+                    "field_ai":false,
+                    "field_timestamp":false
+                },{
                     "field_name":"product_price",
                     "field_datatype":"int",
                     "field_length":11,

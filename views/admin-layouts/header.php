@@ -66,26 +66,26 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li <?=($this->controller=="admin") ? 'class="active"' : ''; ?>>
                         <a href="<?=URL;?>/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
-                        <a href="<?=URL;?>/products"><i class="fa fa-fw fa-bar-chart-o"></i> Manajemen Produk</a>
+                    <li <?=($this->controller=="admin/products") ? 'class="active"' : ''; ?>>
+                        <a href="<?=URL;?>/admin/products"><i class="fa fa-fw fa-bar-chart-o"></i> Manajemen Produk</a>
                     </li>
-                    <li>
-                        <a href="<?=URL;?>/members"><i class="fa fa-fw fa-table"></i> Manajemen Member</a>
+                    <li <?=($this->controller=="admin/members") ? 'class="active"' : ''; ?>>
+                        <a href="<?=URL;?>/admin/members"><i class="fa fa-fw fa-table"></i> Manajemen Member</a>
                     </li>
-                    <li>
-                        <a href="<?=URL;?>/trancations"><i class="fa fa-fw fa-edit"></i> Transaksi</a>
+                    <li <?=($this->controller=="admin/transactions") ? 'class="active"' : ''; ?>>
+                        <a href="<?=URL;?>/admin/trancations"><i class="fa fa-fw fa-edit"></i> Transaksi</a>
                     </li>
-                    <li>
-                        <a href="<?=URL;?>/promo"><i class="fa fa-fw fa-desktop"></i> Promo</a>
+                    <li <?=($this->controller=="admin/promo") ? 'class="active"' : ''; ?>>
+                        <a href="<?=URL;?>/admin/promo"><i class="fa fa-fw fa-desktop"></i> Promo</a>
                     </li>
-                    <li>
-                        <a href="<?=URL;?>/settings"><i class="fa fa-fw fa-wrench"></i> Settings</a>
+                    <li <?=($this->controller=="admin/settings") ? 'class="active"' : ''; ?>>
+                        <a href="<?=URL;?>/admin/settings"><i class="fa fa-fw fa-wrench"></i> Settings</a>
                     </li>
-                    <li>
-                        <a href="<?=URL;?>/users"><i class="fa fa-fw fa-users"></i> Manajemen User</a>
+                    <li <?=($this->controller=="admin/users") ? 'class="active"' : ''; ?>>
+                        <a href="<?=URL;?>/admin/users"><i class="fa fa-fw fa-users"></i> Manajemen User</a>
                     </li>
                 </ul>
             </div>
