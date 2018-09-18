@@ -40,7 +40,7 @@ foreach($this->vendor as $key => $val){
               <ul class="top_nav_menu">
                 <li class="account">
                   <a href="#">
-                    Akun Saya
+                    My Account
                     <i class="fa fa-angle-down"></i>
                   </a>
                   <ul class="account_selection">
